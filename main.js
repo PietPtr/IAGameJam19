@@ -232,7 +232,7 @@ text.innerHTML = score + "mL";
 text.style.fontFamily = "Impact"
 text.style.fontSize = "70pt";
 text.style.top = 20 + 'px';
-text.style.left = 20 + 'px';
+text.style.left = -400 + 'px';
 text.style.color = "white";
 document.body.appendChild(text);
 
@@ -264,7 +264,7 @@ onRenderFcts.push(function(dt) {
             break;
         case "First":
             text.innerHTML = Math.round(score) + "mL";
-            if (this.score > 100) {
+            if (this.score > 1600) {
                 gamestate = "Shining";
                 licht.show();
             }
@@ -272,7 +272,7 @@ onRenderFcts.push(function(dt) {
             break;
         case "Shining":
             text.innerHTML = Math.round(score) + "mL";
-            if (this.score > 200) {
+            if (this.score > 5000) {
                 gamestate = "DeadFalling";
                 endTime = +new Date();
             }
@@ -286,6 +286,7 @@ onRenderFcts.push(function(dt) {
             if (current > 1.0) {
                 gamestate = "End"
                 text.innerHTML = "Congratulations. You drank over 5 liters in " + ((endTime - startTime) / 1000).toString() + " seconds!"
+                text.style.left = 20 + 'px';
             }
 
             curtain.style.opacity = (current + dt * 0.3).toString();
